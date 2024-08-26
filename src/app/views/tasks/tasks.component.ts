@@ -1,5 +1,5 @@
 import { Component, OnInit, Signal } from '@angular/core';
-import { CommonModule } from '@angular/common'
+import { toSignal } from '@angular/core/rxjs-interop';
 import { Store } from '@ngxs/store';
 import { LoadTasks, Task, TasksState, Type } from '../../store';
 import { MatListModule } from '@angular/material/list'
@@ -9,15 +9,19 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [CommonModule, MatListModule, MatIconModule],
+  imports: [ MatListModule, MatIconModule],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.scss'
 })
 export class TasksComponent implements OnInit {
 
-  scheduledTasks$: Observable<Task[]> = this.store.select(TasksState.getScheduledTasks)
+  private scheduledTasks$: Observable<Task[]> = this.store.select(TasksState.getScheduledTasks)
 
-  completedTasks$: Observable<Task[]> = this.store.select(TasksState.getCompletedTasks)
+  scheduledTasks = toSignal(this.scheduledTasks$)
+
+  private completedTasks$: Observable<Task[]> = this.store.select(TasksState.getCompletedTasks)
+
+  completedTasks = toSignal(this.completedTasks$)
 
   constructor(private readonly store: Store) { }
 
@@ -37,6 +41,14 @@ export class TasksComponent implements OnInit {
       case Type.REFRESH_RSS:
         return "refresh"
     }
+  }
+
+  mapTaskInfo(task: Task): string {
+    let info = `ID: ${task.id}`;
+    if (task.mediaTitle) {
+      info += ` | ${task.mediaTitle}`
+    }
+    return info;
   }
 
   ngOnInit(): void {

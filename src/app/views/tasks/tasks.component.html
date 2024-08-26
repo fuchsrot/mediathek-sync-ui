@@ -1,21 +1,20 @@
 <h1>Tasks</h1>
 
 <mat-list>
-    <h3 matSubheader> {{(scheduledTasks$ | async)?.length}} Scheduled Tasks</h3>
-    @for (scheduledTask of (scheduledTasks$ | async); track scheduledTask) {
+    <h3 matSubheader> {{scheduledTasks()?.length}} Scheduled Tasks</h3>
+    @for (scheduledTask of scheduledTasks(); track scheduledTask) {
     <mat-list-item>
         <mat-icon matListItemIcon>{{mapIcon(scheduledTask.type)}}</mat-icon>
         <span matListItemTitle>{{mapType(scheduledTask.type)}}</span>
-        <span matListItemLine>Id: {{ scheduledTask.id }}</span>
-        // template content to repeat
+        <span matListItemLine>Id: {{ mapTaskInfo(scheduledTask) }}</span>
     </mat-list-item>
     }
-    <h3 matSubheader> {{(completedTasks$ | async)?.length}} Completed Tasks</h3>
-    @for (completedTask of (completedTasks$ | async); track completedTask) {
+    <h3 matSubheader> {{completedTasks()?.length}} Completed Tasks</h3>
+    @for (completedTask of completedTasks(); track completedTask) {
     <mat-list-item>
         <mat-icon matListItemIcon>{{mapIcon(completedTask.type)}}</mat-icon>
         <span matListItemTitle>{{mapType(completedTask.type)}}</span>
-        <span matListItemLine>Id: {{ completedTask.id }}</span>
+        <span matListItemLine>{{ mapTaskInfo(completedTask) }}</span>
     </mat-list-item>
     }
 </mat-list>

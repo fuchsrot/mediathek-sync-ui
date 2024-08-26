@@ -18,7 +18,7 @@ export interface Task {
 
     id: string;
 
-    mediaId?: string;
+    mediaTitle?: string;
 
     status: Status;
 
