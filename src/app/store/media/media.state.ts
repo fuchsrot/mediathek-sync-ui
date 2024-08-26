@@ -3,6 +3,7 @@ import { Media, MediaStateModel } from "./media.model";
 import { Injectable } from "@angular/core";
 import { LoadMedia } from "./media.actions";
 import { Observable, tap } from "rxjs";
+import { ApiService } from "../../services/api.service";
 
 @State<MediaStateModel>({
     name: "mediaState",
@@ -12,6 +13,8 @@ import { Observable, tap } from "rxjs";
 })
 @Injectable()
 export class MediaState {
+
+    constructor(private apiService: ApiService) { }
 
     @Action(LoadMedia)
     loadTasks(ctx: StateContext<MediaStateModel>): Observable<Media[]> {
