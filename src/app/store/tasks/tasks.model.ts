@@ -14,11 +14,16 @@ export enum Type {
     REFRESH_RSS = "REFRESH_RSS"
 }
 
+export interface Target {
+    id: string;
+    title: string;
+}
+
 export interface Task {
 
     id: string;
 
-    mediaTitle?: string;
+    target: Target;
 
     status: Status;
 

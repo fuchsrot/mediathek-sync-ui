@@ -19,24 +19,16 @@ export class TasksState {
 
     @Selector()
     static getScheduledTasks(state: TasksStateModel): Task[] {
-        console.log('task')
         return state.tasks.filter(task => task.status === Status.SCHEDULED);
     }
 
     @Selector()
     static getCompletedTasks(state: TasksStateModel): Task[] {
-        console.log('completed')
-        console.log(state.tasks)
-        const tasks = state.tasks.filter(task => task.status === "COMPLETED");
-        console.log(tasks)
-        return tasks;
+        return state.tasks.filter(task => task.status === Status.COMPLETED);
     }
 
     @Action(LoadTasks)
-    loadTransactions(ctx: StateContext<TasksStateModel>): Observable<Task[]> {
-        console.log('Load Tasks')
-        return this.apiService.loadTransactions().pipe(tap(tasks => ctx.patchState({ tasks: [...tasks] })))
+    loadTasks(ctx: StateContext<TasksStateModel>): Observable<Task[]> {
+        return this.apiService.loadTasks().pipe(tap(tasks => ctx.patchState({ tasks: [...tasks] })))
     }
-
-
 }

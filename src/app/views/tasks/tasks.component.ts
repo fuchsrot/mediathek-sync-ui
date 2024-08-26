@@ -44,11 +44,7 @@ export class TasksComponent implements OnInit {
   }
 
   mapTaskInfo(task: Task): string {
-    let info = `ID: ${task.id}`;
-    if (task.mediaTitle) {
-      info += ` | ${task.mediaTitle}`
-    }
-    return info;
+    return `${task.id} | ${task.target.title}`;
   }
 
   ngOnInit(): void {
