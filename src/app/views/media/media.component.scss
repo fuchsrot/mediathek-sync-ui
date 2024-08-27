@@ -1,0 +1,20 @@
+.button-bar button + button {
+    margin-left: 10px;
+}
+
+.filter-bar {
+    display: flex;
+    gap: 10px;
+
+    &__source {
+        width: 30%;
+    }
+
+    &__status {
+        width: 20%;
+    }
+
+    &__term {
+        width: 50%;
+    }  
+}

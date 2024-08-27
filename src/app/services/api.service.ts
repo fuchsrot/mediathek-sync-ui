@@ -15,6 +15,6 @@ export class ApiService {
   }
 
   public loadMedia(): Observable<Media[]> {
-    return this.httpClient.get<Task[]>('/api/media')
+    return this.httpClient.get<Media[]>('/api/media')
   }
 }

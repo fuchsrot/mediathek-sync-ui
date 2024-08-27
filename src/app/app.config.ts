@@ -6,7 +6,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { withNgxsReduxDevtoolsPlugin } from '@ngxs/devtools-plugin';
 import { withNgxsLoggerPlugin } from '@ngxs/logger-plugin';
 import { provideStore } from '@ngxs/store';
-import { TasksState } from './store'
+import { MediaState, TasksState } from './store'
 import { provideHttpClient } from '@angular/common/http'
 
 export const appConfig: ApplicationConfig = {
@@ -14,7 +14,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
     provideStore(
-      [TasksState],
+      [TasksState, MediaState],
       withNgxsReduxDevtoolsPlugin(),
       withNgxsLoggerPlugin()
     ),

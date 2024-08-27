@@ -2,7 +2,7 @@ export interface TasksStateModel {
     tasks: Task[]
 }
 
-export enum Status {
+export enum TaskStatus {
     SCHEDULED = "SCHEDULED",
     RUNNING = "RUNNING",
     ERROR = "ERROR",
@@ -25,7 +25,7 @@ export interface Task {
 
     target: Target;
 
-    status: Status;
+    status: TaskStatus;
 
     type: Type;
 

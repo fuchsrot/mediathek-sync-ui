@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
-import { Task, TasksStateModel, Status } from './tasks.model'
+import { Task, TasksStateModel, TaskStatus } from './tasks.model'
 import { ApiService } from "../../services/api.service";
 import { LoadTasks } from "./tasks.actions";
 import { Observable, tap } from "rxjs";
@@ -19,12 +19,12 @@ export class TasksState {
 
     @Selector()
     static getScheduledTasks(state: TasksStateModel): Task[] {
-        return state.tasks.filter(task => task.status === Status.SCHEDULED);
+        return state.tasks.filter(task => task.status === TaskStatus.SCHEDULED);
     }
 
     @Selector()
     static getCompletedTasks(state: TasksStateModel): Task[] {
-        return state.tasks.filter(task => task.status === Status.COMPLETED);
+        return state.tasks.filter(task => task.status === TaskStatus.COMPLETED);
     }
 
     @Action(LoadTasks)

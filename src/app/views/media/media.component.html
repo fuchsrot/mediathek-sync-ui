@@ -1,1 +1,41 @@
-<p>media works!</p>
+<h1>Media</h1>
+
+<form class="filter-bar">
+    <mat-form-field class="filter-bar__source">
+        <mat-label>Source</mat-label>
+        <mat-select>
+            <mat-option value="1">Test Feed</mat-option>      
+        </mat-select>
+      </mat-form-field>
+    <mat-form-field class="filter-bar__status">
+        <mat-label>Status</mat-label>
+        <mat-select>
+            <mat-option value="NEW">New</mat-option>
+            <mat-option value="SCHEDULED">Scheduled</mat-option>
+            <mat-option value="RUNNING">Running</mat-option>
+            <mat-option value="DOWLOADED">Downloaded</mat-option>       
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="filter-bar__term">
+        <input type="text" matInput placeholder="Term">
+    </mat-form-field>
+</form>
+
+<mat-list>
+    @for (mediaItem of media(); track mediaItem) {
+        <mat-list-item>
+            <span matListItemTitle [matTooltip]="mediaItem.content || ''">{{mediaItem.title}}</span>
+            <span matListItemLine>{{mapItemLine(mediaItem)}}</span>
+            <span matListItemMeta>
+                <span class="button-bar">
+                <button mat-mini-fab>
+                    <mat-icon>download</mat-icon>
+                </button>
+                <button mat-mini-fab>
+                    <mat-icon>delete</mat-icon>
+                </button>
+                </span>
+            </span>
+        </mat-list-item>
+    }
+</mat-list>

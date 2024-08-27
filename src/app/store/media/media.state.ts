@@ -1,4 +1,4 @@
-import { Action, State, StateContext } from "@ngxs/store";
+import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { Media, MediaStateModel } from "./media.model";
 import { Injectable } from "@angular/core";
 import { LoadMedia } from "./media.actions";
@@ -15,6 +15,12 @@ import { ApiService } from "../../services/api.service";
 export class MediaState {
 
     constructor(private apiService: ApiService) { }
+
+    @Selector()
+    static getMedia(state: MediaStateModel): Media[] {
+        console.log(state)
+        return state.media;
+    }
 
     @Action(LoadMedia)
     loadTasks(ctx: StateContext<MediaStateModel>): Observable<Media[]> {
