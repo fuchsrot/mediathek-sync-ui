@@ -1,7 +1,7 @@
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { Media, MediaStateModel } from "./media.model";
 import { Injectable } from "@angular/core";
-import { LoadMedia, SetSourceFilter, SetStatusFilter, SetTitleFilter } from "./media.actions";
+import { LoadMedia, SetMediaStatus, SetSourceFilter, SetStatusFilter, SetTitleFilter } from "./media.actions";
 import { Observable, tap } from "rxjs";
 import { ApiService } from "../../services/api.service";
 
@@ -58,6 +58,16 @@ export class MediaState {
     setTitleFilter(ctx: StateContext<MediaStateModel>, {title}: SetTitleFilter): void {
         const {filter} = ctx.getState();
         ctx.patchState({filter: {...filter, title}});
+    }
+
+    @Action(SetMediaStatus)
+    setMediaStatus(ctx: StateContext<MediaStateModel>, action: SetMediaStatus): void {
+        const {media} = ctx.getState();
+        const mediaItem = media.find(({id}) => id === action.id)
+        if (mediaItem) {
+            mediaItem.status = action.status 
+            ctx.patchState({media: [...media, mediaItem]});
+        }
     }
 
 }

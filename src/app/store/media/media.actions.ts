@@ -4,6 +4,12 @@ export class LoadMedia {
     static readonly type = '[Media] Load';
 }
 
+export class SetMediaStatus {
+    static readonly type = '[Media] Set Media Status';
+
+    constructor(public id: string, public status: MediaStatus) {}
+}
+
 export class SetSourceFilter {
     static readonly type = '[Media] Set Source Filter';
 

@@ -34,7 +34,7 @@ export interface Task {
     updateDate: Date
 }
 
-export interface CreateTask {
+export interface CreateTaskDto {
     targetId: string,
     type: Type
 }

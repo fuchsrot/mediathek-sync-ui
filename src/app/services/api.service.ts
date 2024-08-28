@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap, map } from 'rxjs';
-import {CreateTask, Media, Task} from '../store';
+import { Observable } from 'rxjs';
+import {CreateTaskDto, Media, Task} from '../store';
 import { Source } from '../store/sources/sources.model';
 
 @Injectable({
@@ -23,7 +23,7 @@ export class ApiService {
      return this.httpClient.get<Source[]>('/api/sources');
   }
 
-  public saveTask(createTask: CreateTask): Observable<Task> {
+  public createTask(createTask: CreateTaskDto): Observable<Task> {
     return this.httpClient.post<Task>('/api/tasks', createTask)
   }
 }

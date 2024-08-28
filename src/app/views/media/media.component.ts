@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { LoadMedia, LoadSources, Media, MediaState, SetStatusFilter, SetTitleFilter, SourcesState } from '../../store';
+import { CreateTask, LoadMedia, LoadSources, Media, MediaState, SetMediaStatus, SetStatusFilter, SetTitleFilter, SourcesState, Type } from '../../store';
 import {toSignal} from '@angular/core/rxjs-interop'
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button'
@@ -53,7 +53,11 @@ export class MediaComponent implements OnInit {
   onTitleFilterChange(event: any): void {
     const {value} = event.target;
     this.store.dispatch(new SetTitleFilter(value));
+  }
 
+  onDownloadClick(mediaId: string) {
+    this.store.dispatch(new CreateTask(mediaId, Type.DOWNLOAD_MEDIA))
+    this.store.dispatch(new SetMediaStatus(mediaId, 'SCHEDULED'))
   }
 
   ngOnInit(): void {
