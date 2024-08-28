@@ -33,3 +33,8 @@ export interface Task {
 
     updateDate: Date
 }
+
+export interface CreateTask {
+    targetId: string,
+    type: Type
+}

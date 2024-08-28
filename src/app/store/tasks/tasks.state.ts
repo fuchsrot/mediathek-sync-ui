@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
-import { Task, TasksStateModel, TaskStatus } from './tasks.model'
+import { CreateTask, Task, TasksStateModel, TaskStatus } from './tasks.model'
 import { ApiService } from "../../services/api.service";
-import { LoadTasks } from "./tasks.actions";
+import { LoadTasks, SaveTask } from "./tasks.actions";
 import { Observable, tap } from "rxjs";
 
 @State<TasksStateModel>({
@@ -30,5 +30,10 @@ export class TasksState {
     @Action(LoadTasks)
     loadTasks(ctx: StateContext<TasksStateModel>): Observable<Task[]> {
         return this.apiService.loadTasks().pipe(tap(tasks => ctx.patchState({ tasks: [...tasks] })))
+    }
+
+    @Action(SaveTask)
+    saveTask(ctx: StateContext<TasksStateModel>, {dto}: SaveTask) {
+        this.apiService.saveTask(dto)
     }
 }

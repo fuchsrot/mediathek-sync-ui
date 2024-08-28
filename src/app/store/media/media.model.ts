@@ -1,23 +1,30 @@
 export type MediaStatus = 'NEW' | 'SCHEDULED' | 'RUNNING' | 'DOWNLOADED' | 'DELETED'
 
+export interface Filter {
+    status?: MediaStatus,
+    source?: string,
+    title?: string
+}
+
 export interface Media {
-    id: string;
-    title: string;
-    content?: string;
-    link: string;
-    creator: string;
-    pubDate: string;
-    websiteUrl: string;
-    duration: number;
-    status: MediaStatus;
+    id: string,
+    title: string,
+    content?: string,
+    link: string,
+    creator: string,
+    pubDate: string,
+    websiteUrl: string,
+    duration: number,
+    status: MediaStatus,
     source: {
         id: string,
         title: string
-    };
-    createDate: Date;
-    updateDate: Date;
+    },
+    createDate: Date,
+    updateDate: Date
 }
 
 export interface MediaStateModel {
-    media: Media[]
+    media: Media[],
+    filter?: Filter
 }

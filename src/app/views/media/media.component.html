@@ -4,12 +4,16 @@
     <mat-form-field class="filter-bar__source">
         <mat-label>Source</mat-label>
         <mat-select>
-            <mat-option value="1">Test Feed</mat-option>      
+            <mat-option>Clear</mat-option>
+            @for (source of sources(); track source) {
+                <mat-option [value]="source.id">{{source.title}}</mat-option>
+            }      
         </mat-select>
       </mat-form-field>
     <mat-form-field class="filter-bar__status">
         <mat-label>Status</mat-label>
-        <mat-select>
+        <mat-select (selectionChange)="onStatusSelectionChange($event)">
+            <mat-option>Clear</mat-option>
             <mat-option value="NEW">New</mat-option>
             <mat-option value="SCHEDULED">Scheduled</mat-option>
             <mat-option value="RUNNING">Running</mat-option>
@@ -17,7 +21,7 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field class="filter-bar__term">
-        <input type="text" matInput placeholder="Term">
+        <input (input)="onTitleFilterChange($event)" type="text" matInput placeholder="Title">
     </mat-form-field>
 </form>
 
