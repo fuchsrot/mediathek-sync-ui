@@ -17,7 +17,7 @@
             <mat-option value="NEW">New</mat-option>
             <mat-option value="SCHEDULED">Scheduled</mat-option>
             <mat-option value="RUNNING">Running</mat-option>
-            <mat-option value="DOWLOADED">Downloaded</mat-option>       
+            <mat-option value="DOWNLOADED">Downloaded</mat-option>       
         </mat-select>
       </mat-form-field>
       <mat-form-field class="filter-bar__term">
@@ -32,10 +32,10 @@
             <span matListItemLine>{{mapItemLine(mediaItem)}}</span>
             <span matListItemMeta>
                 <span class="button-bar">
-                <button mat-mini-fab (click)="onDownloadClick(mediaItem.id)">
+                <button *ngIf="canBeDownloaded(mediaItem)" mat-mini-fab (click)="onDownloadClick(mediaItem.id)">
                     <mat-icon>download</mat-icon>
                 </button>
-                <button mat-mini-fab>
+                <button *ngIf="canBeDeleted(mediaItem)" mat-mini-fab>
                     <mat-icon>delete</mat-icon>
                 </button>
                 </span>

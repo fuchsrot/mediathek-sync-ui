@@ -63,11 +63,10 @@ export class MediaState {
     @Action(SetMediaStatus)
     setMediaStatus(ctx: StateContext<MediaStateModel>, action: SetMediaStatus): void {
         const {media} = ctx.getState();
-        const mediaItem = media.find(({id}) => id === action.id)
-        if (mediaItem) {
-            mediaItem.status = action.status 
-            ctx.patchState({media: [...media, mediaItem]});
+        const index = media.findIndex(({id}) => id === action.id)
+        if (index > -1) {
+            media[index].status = action.status 
+            ctx.patchState({media: [...media]});
         }
     }
-
 }

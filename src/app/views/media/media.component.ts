@@ -8,11 +8,20 @@ import { MatIconModule } from '@angular/material/icon'
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectChange, MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
+import {CommonModule} from '@angular/common'
 
 @Component({
   selector: 'app-media',
   standalone: true,
-  imports: [MatListModule, MatButtonModule, MatIconModule, MatTooltipModule, MatSelectModule, MatInputModule],
+  imports: [
+    MatListModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatSelectModule,
+    MatInputModule,
+    CommonModule
+  ],
   templateUrl: './media.component.html',
   styleUrl: './media.component.scss'
 })
