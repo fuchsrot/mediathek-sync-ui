@@ -31,6 +31,8 @@ export class TasksComponent implements OnInit {
         return "Download Media";
       case Type.REFRESH_RSS:
         return "Refresh RSS"
+      case Type.DELETE_FILE:
+        return "Delet File"
     }
   }
 
@@ -40,6 +42,8 @@ export class TasksComponent implements OnInit {
         return "download";
       case Type.REFRESH_RSS:
         return "refresh"
+      case Type.DELETE_FILE:
+        return "delete"
     }
   }
 

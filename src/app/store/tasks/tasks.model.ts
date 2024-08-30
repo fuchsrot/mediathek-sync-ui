@@ -11,7 +11,8 @@ export enum TaskStatus {
 
 export enum Type {
     DOWNLOAD_MEDIA = "DOWNLOAD_MEDIA",
-    REFRESH_RSS = "REFRESH_RSS"
+    REFRESH_RSS = "REFRESH_RSS",
+    DELETE_FILE = 'DELETE_FILE'
 }
 
 export interface Target {

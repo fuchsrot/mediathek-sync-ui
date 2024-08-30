@@ -1,9 +1,9 @@
 <h1>Media</h1>
 
-<form class="filter-bar">
+<form class="filter-bar" [formGroup]="filterForm">
     <mat-form-field class="filter-bar__source">
         <mat-label>Source</mat-label>
-        <mat-select>
+        <mat-select formControlName="source">
             <mat-option>Clear</mat-option>
             @for (source of sources(); track source) {
                 <mat-option [value]="source.id">{{source.title}}</mat-option>
@@ -12,7 +12,7 @@
       </mat-form-field>
     <mat-form-field class="filter-bar__status">
         <mat-label>Status</mat-label>
-        <mat-select (selectionChange)="onStatusSelectionChange($event)">
+        <mat-select formControlName="status">
             <mat-option>Clear</mat-option>
             <mat-option value="NEW">New</mat-option>
             <mat-option value="SCHEDULED">Scheduled</mat-option>
@@ -21,7 +21,7 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field class="filter-bar__term">
-        <input (input)="onTitleFilterChange($event)" type="text" matInput placeholder="Title">
+        <input formControlName="title" type="text" matInput placeholder="Title">
     </mat-form-field>
 </form>
 
@@ -35,7 +35,7 @@
                 <button *ngIf="canBeDownloaded(mediaItem)" mat-mini-fab (click)="onDownloadClick(mediaItem.id)">
                     <mat-icon>download</mat-icon>
                 </button>
-                <button *ngIf="canBeDeleted(mediaItem)" mat-mini-fab>
+                <button *ngIf="canBeDeleted(mediaItem)" mat-mini-fab (click)="onDeleteClick(mediaItem.id)">
                     <mat-icon>delete</mat-icon>
                 </button>
                 </span>
