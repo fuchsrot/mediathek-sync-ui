@@ -4,14 +4,21 @@
     <button mat-stroked-button routerLink="/sources/add">ADD A SOURCE</button>
 </div>
 
-<mat-nav-list>
-    <mat-list-item>
-        <span matListItemTitle>Pepper</span>
-        <span matListItemLine>Produced by a plant</span>
-    </mat-list-item>
-
-    <mat-list-item>
-        <span matListItemTitle>Pepper</span>
-        <span matListItemLine>Produced by a plant</span>
-    </mat-list-item>
-</mat-nav-list>
+<mat-list>
+    @for (source of sources(); track source) {
+        <mat-list-item>
+            <span matListItemTitle>{{source.title}}</span>
+            <span matListItemLine>{{source.url}}</span>
+            <span matListItemMeta>
+                <span class="button-bar">
+                <button mat-mini-fab [routerLink]="'/sources/' + source.id">
+                    <mat-icon>settings</mat-icon>
+                </button>
+                <button mat-mini-fab (click)="onDeleteClick(source.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                </span>
+            </span>
+        </mat-list-item>
+    }
+</mat-list>

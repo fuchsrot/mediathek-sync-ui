@@ -1,7 +1,9 @@
-export type MediaStatus = 'NEW' | 'SCHEDULED' | 'RUNNING' | 'DOWNLOADED' | 'DELETED'
+export type MediaStatusFilter = 'NEW' | 'SCHEDULED' | 'RUNNING' | 'DOWNLOADED' | 'DELETED'
+
+export type MediaStatus = 'NEW' | 'SCHEDULED_DOWNLOAD' | 'SCHEDULED_DELETE' | 'RUNNING' | 'DOWNLOADED' | 'DELETED'
 
 export interface Filter {
-    status?: MediaStatus,
+    status?: MediaStatusFilter,
     source?: string,
     title?: string
 }

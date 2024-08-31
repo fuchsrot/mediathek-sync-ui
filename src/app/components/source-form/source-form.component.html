@@ -1,0 +1,19 @@
+<form [formGroup]="sourceForm" class="source-form">
+    <mat-form-field class="form-field" class="source-form__field">
+        <mat-label>Title</mat-label>
+        <input formControlName="title" matInput placeholder="Title">
+    </mat-form-field>
+    <mat-form-field class="source-form__field">
+        <mat-label>Source URL</mat-label>
+        <input formControlName="url" matInput placeholder="Url">
+    </mat-form-field>
+ 
+
+        <mat-slide-toggle formControlName="autoDownload">
+            Auto download
+        </mat-slide-toggle>
+ 
+    <button [disabled]="sourceForm.dirty && !sourceForm.valid" mat-raised-button class="source-form__button" color="primary" (click)="onSaveClick()">
+        Save
+    </button>
+</form>

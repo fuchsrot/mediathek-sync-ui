@@ -26,7 +26,12 @@ export class MediaState {
             return true
         }).filter(media => {
             if (state.filter?.status) {
-                return state.filter?.status === media.status;
+                const { status } = state.filter
+                if (status === 'SCHEDULED') {
+                    return media.status === 'SCHEDULED_DELETE' || media.status === 'SCHEDULED_DOWNLOAD';
+                } else {
+                    return media.status === status
+                }
             }
             return true
         }).filter(media => {

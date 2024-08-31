@@ -1,4 +1,4 @@
-import { MediaStatus } from "./media.model";
+import { MediaStatus, MediaStatusFilter } from "./media.model";
 
 export class LoadMedia {
     static readonly type = '[Media] Load';
@@ -19,7 +19,7 @@ export class SetSourceFilter {
 export class SetStatusFilter {
     static readonly type = '[Media] Set Status Filter';
 
-    constructor(public status: MediaStatus) {}
+    constructor(public status: MediaStatusFilter) {}
 }
 
 export class SetTitleFilter {
