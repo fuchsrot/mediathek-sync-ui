@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SourceFormComponent } from '../../components';
+import { SourceFormComponent, SourceFormDto } from '../../components';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { LoadSources, SourcesState } from '../../store';
@@ -30,6 +30,10 @@ export class SourceComponent implements OnInit {
     private readonly activatedRoute: ActivatedRoute,
     private readonly store: Store
   ) {}
+
+  onFormResult(event: Event) {
+    
+  }
   
   ngOnInit(): void {
     //TODO Rout Guard ??
