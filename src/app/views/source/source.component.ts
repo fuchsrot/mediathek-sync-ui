@@ -39,5 +39,4 @@ export class SourceComponent implements OnInit {
       this.store.dispatch(new LoadSources())
     }
   }
-
 }
